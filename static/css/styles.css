@@ -1,0 +1,33 @@
+.center {
+  text-align: center;
+  align-items: center;
+}
+.margin-top {
+  margin-top: 30px;
+}
+.margin-section {
+  margin: 50px;
+}
+.margin-section-title {
+  margin: 100px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+.margin-section-subtitle {
+  margin-top: 25px;
+  margin: 50px;
+}
+.logo {
+  max-width: 50px;
+  width: 59px;
+  block-size: 59px;
+  height: 59px;
+  inline-size: 59px;
+}
+.logo-brand a, .logo-brand img {
+  white-space: 0;
+
+  font-size: 20px;
+  width: 29%; /*El valor necesario*/
+}
+
