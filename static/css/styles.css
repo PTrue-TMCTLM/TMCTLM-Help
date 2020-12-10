@@ -19,15 +19,11 @@
 }
 .logo {
   max-width: 50px;
-  width: 59px;
-  block-size: 59px;
-  height: 59px;
-  inline-size: 59px;
+  width: 50% !important;
 }
-.logo-brand a, .logo-brand img {
-  white-space: 0;
-
-  font-size: 20px;
-  width: 29%; /*El valor necesario*/
+.foto-card{
+  text-align: center;
+  vertical-align: middle;
+  align-self: center;
+  max-width: 100px;
 }
-
