@@ -1,7 +1,11 @@
 var db = firebase.firestore();
-var docRef = collection("user_license").doc(email3);
+var docRef = db.collection("user_license").doc(email3);
 // Ontener el valor de una clave
 let email3 = localStorage.getItem('userEmail');
+if (email3 = null) {
+    window.location.replace("login/index.html?onLogin=licenses.html"); 
+}
+
 
 // Valid options for source are 'server', 'cache', or
 // 'default'. See https://firebase.google.com/docs/reference/js/firebase.firestore.GetOptions

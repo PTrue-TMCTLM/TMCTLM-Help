@@ -1,3 +1,14 @@
+function ParseURLParametrer(Parametrer){
+  var FullURL = window.location.search.substring(1);
+  var ParametresArray = FullURL.split("&");
+  for (var i = 0; i < ParametresArray.length; i++) {
+    var CurrentParametrer = ParametresArray[i].split('=');
+    if (CurrentParametrer[0] == Parametrer){
+      return CurrentParametrer[1]
+    }
+  }
+}
+var onLogin = ParseURLParametrer('onLogin')
 var email = document.getElementById("inputCorreo");
 var password = document.getElementById("inputPassword");
 
@@ -6,7 +17,6 @@ var uid, displayName, photoURL, email2;
 function registro() {
   firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((user) => {
-      window.location.replace('../index.html'); 
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -20,7 +30,11 @@ function registro() {
 function iniciosesion() {
   firebase.auth().signInWithEmailAndPassword(email.value, password.value)
   .then((user) => {
-    window.location.replace('../index.html'); 
+    if (typeof onLogin == "undefined"){
+    window.location.replace('../index.html');
+  } else {
+    window.location.replace("../" + onLogin)
+  }
   })
   .catch((error) => {
     var errorCode = error.code;

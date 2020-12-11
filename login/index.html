@@ -103,28 +103,28 @@
         </div>
       </div>
 
-    <script src="../static/js/firebase/auth.js"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+      <!-- Now put below de init-->
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
+      authDomain: "tmctlm-help.firebaseapp.com",
+      projectId: "tmctlm-help",
+      storageBucket: "tmctlm-help.appspot.com",
+      messagingSenderId: "276187882589",
+      appId: "1:276187882589:web:e3de653765a5403a7559b4"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
-        authDomain: "tmctlm-help.firebaseapp.com",
-        projectId: "tmctlm-help",
-        storageBucket: "tmctlm-help.appspot.com",
-        messagingSenderId: "276187882589",
-        appId: "1:276187882589:web:e3de653765a5403a7559b4",
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <!-- Now put below the code -->
+     <script src="../static/js/firebase/auth.js"></script>
     <!-- FontAwesome -->
     <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
 
