@@ -1,10 +1,8 @@
-var email = document.getElementById("inputCorreo").value; // FALTA ARREGLAR EL VALOR VACIO!!!
-var password = document.getElementById("inputPassword").value;
+var email = document.getElementById("inputCorreo"); // FALTA ARREGLAR EL VALOR VACIO!!!
+var password = document.getElementById("inputPassword");
 
 function registro() {
-console.log(email)
-console.log(password)
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+  firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
     .then((user) => {
       // Signed in 
       // ...
