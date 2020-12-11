@@ -1,13 +1,13 @@
 let email3 = localStorage.getItem('userEmail');
 
-if (email3 = "undefined") {
+/*if (email3 = "undefined") {
     window.location.replace("login/index.html?onLogin=licenses.html"); 
-}
-
+}*/
+var email3array = email3.split("&")
 var db = firebase.firestore();
 var docRef = db.collection("user_license").doc(email3array[1]);
 // Ontener el valor de una clave
-var email3array = email3.split("&")
+
 console.log(email3array);
 console.log("0-- " + email3array[0])
 console.log("1-- " + email3array[1])
