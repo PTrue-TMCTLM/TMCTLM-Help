@@ -9,10 +9,10 @@ var wait = function (tiempo) {
     source: "default",
   };
   var db = firebase.firestore();
-  var email3array, docRef, email3;
+  var email3array, docRef, email3, goToVar ;
   email3 = localStorage.getItem("userEmail");
   email3array = email3.split("&");
-  function waiter() {
+  function waiter(goTo) {
     try {
       console.log("OK 0 " + email3array[0]);
       console.log("OK 1 " + email3array[1]);
@@ -22,6 +22,7 @@ var wait = function (tiempo) {
       console.log("ERR: No has iniciado sesion");
     } finally {
       docRef = db.collection("user_license").doc(email3array[1]).get();
+      goToVar = goTo
       imloggedin();
     }
   }
@@ -33,6 +34,13 @@ var wait = function (tiempo) {
   // PONER LOS VAR ENCIMA DE ESTA LINEA
   
   function ifLoggedIn() {
-    window.location.replace("login/index.html?onLogin=licenses.html");
+    window.location.replace("login/index.html?onLogin=" + goToVar);
   }
   
+  function logout(GoToLogout) {
+    firebase.auth().signOut().then(function() {
+      window.location.replace("login/index.html?onLogin=" + GoToLogout);
+    }).catch(function(error) {
+    });
+    
+  }

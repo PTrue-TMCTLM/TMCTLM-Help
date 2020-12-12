@@ -5,6 +5,13 @@ var wait = function (tiempo) {
     },
   };
 };
+function generarLicencia() {
+  var caracteres = "ABCDEFGHJKMNPQRTUVWXYZ2346789";
+licenciaGen = "";
+for (i=0; i<20; i++) licenciaGen +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
+console.log(licenciaGen)
+}
+
 var db = firebase.firestore();
 function ParseURLParametrer(Parametrer) {
   var FullURL = window.location.search.substring(1);
@@ -20,23 +27,27 @@ var onLogin = ParseURLParametrer("onLogin");
 var email = document.getElementById("inputCorreo");
 var password = document.getElementById("inputPassword");
 
-var uid, displayName, photoURL, email2;
+var uid, displayName, photoURL, email2, licenciaGen;
 
 function registro() {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email.value, password.value)
     .then((user) => {})
+    generarLicencia()
     db.collection("user_license")
     .doc(email.value)
-    .collection("userOwns")
-    .add()
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
+    .collection("userOwns").add({
+      Licencia: licenciaGen,
+      Tipo: "Regalo",
+      Apps_usadas: "Ninguna",
+      Apps_max: "1"
+    }).then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
 }
 
 function iniciosesion() {

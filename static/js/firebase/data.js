@@ -58,8 +58,8 @@ function tables_adddata() {
           <td>${doc.data().Licencia}</td>
           <td>${doc.data().Tipo}</td>
           <td>${doc.data().Apps_usadas}</td>
-          <td>${doc.data().Apps_max}</td>
-          <td><button class="btn btn-warning">Editar</button></td>
+          <td>}</td>
+          <td><button class="btn btn-warning" onclick='tables_updatedata("${doc.id}", "${doc.data().Licencia}", "${doc.data().Tipo}", "${doc.data().Apps_usadas}", "${doc.data().Apps_usadas}" )'>Editar</button></td>
           <td><button class="btn btn-danger" onclick='tables_deleteData("${
             doc.id
           }")'>Eliminar</button></td>
@@ -73,6 +73,7 @@ function tables_adddata() {
   }
 }
 function tables_deleteData(id) {
+
   db.collection("user_license")
     .doc(emailval)
     .collection("userOwns")
@@ -85,4 +86,39 @@ function tables_deleteData(id) {
       errorCodeModal.innerHTML = error
       $("#errorModal").modal("show")
     })
+}
+
+function tables_updatedata(id, licenciaVar, TipoVar, Apps_usadasVar, Apps_maxVar) {
+    licencia.value = licenciaVar
+    Tipo.value = TipoVar
+    Apps_usadas.value = Apps_usadasVar
+    Apps_max.value = Apps_maxVar
+    var botonGuardar = document.getElementById("botonGuardar")
+    botonGuardar.innerHTML = "Editar"
+    botonGuardar.onclick = function(){
+        
+
+    var itemToEdit = db.collection("user_license")
+    .doc(emailval)
+    .collection("userOwns")
+    .doc(id)
+
+// Set the "capital" field of the city 'DC'
+return itemToEdit.update({
+    Licencia: licencia.value,
+    Tipo: Tipo.value,
+    Apps_usadas: Apps_usadas.value,
+    Apps_max: Apps_max.value,
+  })
+.then(function() {
+    console.log("Document successfully updated!");
+    botonGuardar.innerHTML = "Guardar"
+    botonGuardar.onclick = tables_createdata()
+})
+.catch(function(error) {
+    // The document probably doesn't exist.
+    errorCodeModal.innerHTML = error
+    $("#errorModal").modal("show")
+});
+}
 }
