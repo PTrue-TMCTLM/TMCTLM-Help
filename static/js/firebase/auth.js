@@ -40,9 +40,9 @@ function iniciosesion() {
     .auth()
     .signInWithEmailAndPassword(email.value, password.value)
     .then((user) => {
-      localStorage.setItem("userEmail", user.email);
+      localStorage.setItem("userEmail", user.uid + "&" + user.email);
       alert(localStorage.getItem("userEmail"));
-      whenislogged();
+      whenislogged(user);
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -52,9 +52,14 @@ function iniciosesion() {
     });
 }
 
-function whenislogged() {
+function whenislogged(user) {
   var user = firebase.auth().currentUser;
   var email, uid;
+
+
+  localStorage.setItem("userEmail", uid + "&" + email);
+  wait(3000).then(function() {
+
 
   if (user != null) {
     email = user.email;
@@ -69,4 +74,5 @@ function whenislogged() {
   } else {
     localStorage.removeItem("userEmail");
   }
+});
 }

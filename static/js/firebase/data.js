@@ -1,36 +1,26 @@
-let email3 = localStorage.getItem('userEmail');
+function imloggedin(){
+    
+}
 
-/*if (email3 = "undefined") {
-    window.location.replace("login/index.html?onLogin=licenses.html"); 
-}*/
-var email3array = email3.split("&")
-var db = firebase.firestore();
-var docRef = db.collection("user_license").doc(email3array[1]);
-// Ontener el valor de una clave
-
-console.log(email3array);
-console.log("0-- " + email3array[0])
-console.log("1-- " + email3array[1])
-
-
-
-
-// Valid options for source are 'server', 'cache', or
-// 'default'. See https://firebase.google.com/docs/reference/js/firebase.firestore.GetOptions
-// for more information.
-var getOptions = {
-    source: 'default'
-};
-
-// Get a document, forcing the SDK to fetch from the offline cache.
-docRef.get(getOptions).then(function(doc) {
-    // Document was found in the cache. If no cached document exists,
-    // an error will be returned to the 'catch' block below.
-    console.log("Cached document data:", doc.data());
-}).catch(function(error) {
-    console.log("Error getting cached document:", error);
-});
-
-
-
-
+function tables_adddata() {
+  var tabla = document.getElementById("licencias");
+  db.collection("user_license")
+    .doc(email3array[1])
+    .collection("userOwns")
+    .get()
+    .then((querySnapshot) => {
+      tabla.innerHTML = "";
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().Licencia}`);
+        tabla.innerHTML += `
+          <tr>
+          <th scope="row">${doc.id}</th>
+          <td>${doc.data().Licencia}</td>
+          <td>${doc.data().Tipo}</td>
+          <td>${doc.data().Apps_usadas}</td>
+          <td>${doc.data().Apps_max}</td>
+        </tr>
+          `;
+      });
+    });
+}

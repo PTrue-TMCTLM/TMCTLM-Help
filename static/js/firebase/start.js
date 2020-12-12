@@ -19,6 +19,5 @@ var wait = function(tiempo) {
   };
 
 wait(2000).then(function() {
-    loadcode()
   });
 

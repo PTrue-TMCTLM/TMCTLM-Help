@@ -15,7 +15,11 @@
       href="static/img/favicon.ico"
       type="image/x-icon"
     />
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css"
+    />
 
     <!-- Bootstrap core CSS -->
     <link
@@ -38,18 +42,23 @@
       rel="stylesheet"
       type="text/css"
     />
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.22/datatables.min.css"
+    />
     <!-- Custom styles for this template -->
     <link href="static/css/landing-page.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
 
-  <body>
+  <body onload="waiter()">
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <div class="logo logo-brand">
-          <a class="navbar-brand logo-brand" href="index.html"><img
+          <a class="navbar-brand logo-brand" href="index.html"
+            ><img
               class="logo logo-brand"
               src="static/img/Logo-tmctlm.png"
             />TMCTLM Help</a
@@ -66,14 +75,63 @@
           >
             Resources
           </button>
-
         </div>
       </div>
     </nav>
 
-<section>
-  ta
-</section>
+    <section class="bg-ligt center margin-top margin-section">
+      <form class="text-center">
+        <label for="licenciaInput">Licencia</label>
+        <input
+          type="text"
+          class="form-control"
+          id="licenciaInput"
+          placeholder="Licencia"
+        />
+        <br />
+        <label for="TipoInput">Tipo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="TipoInput"
+          placeholder="Tipo"
+        />
+        <br />
+        <label for="Apps_usadasInput">Apps usadas</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Apps_usadasInput"
+          placeholder="Apps usadas"
+        />
+        <br />
+        <label for="Apps_maxInput">Apps max</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Apps_maxInput"
+          placeholder="Apps max"
+        />
+        <br />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" onclick="tables_adddata()">
+          Recargar
+        </button>
+      </form>
+      <br />
+
+      <table id="licenciastable" class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <th scope="col">ID</th>
+          <th scope="col">Licencia</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Apps usadas</th>
+          <th scope="col">Apps max</th>
+        </thead>
+        <tbody id="licencias"></tbody>
+      </table>
+    </section>
 
     <!-- Footer -->
     <footer class="footer bg-light">
@@ -123,38 +181,39 @@
         </div>
       </div>
     </footer>
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-      <!-- Now put below de init-->
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
-      authDomain: "tmctlm-help.firebaseapp.com",
-      projectId: "tmctlm-help",
-      storageBucket: "tmctlm-help.appspot.com",
-      messagingSenderId: "276187882589",
-      appId: "1:276187882589:web:e3de653765a5403a7559b4"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <!-- Now put below de init-->
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
+        authDomain: "tmctlm-help.firebaseapp.com",
+        projectId: "tmctlm-help",
+        storageBucket: "tmctlm-help.appspot.com",
+        messagingSenderId: "276187882589",
+        appId: "1:276187882589:web:e3de653765a5403a7559b4",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
     <!-- Now put below the code -->
-     <script src="static/js/firebase/data.js"></script>
+    <script src="static/js/firebase/data.js"></script>
+    <script src="static/js/firebase/auth-login.js"></script>
 
-
-
-
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.22/datatables.min.js"
+    ></script>
 
     <!-- FontAwesome -->
     <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
       integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
