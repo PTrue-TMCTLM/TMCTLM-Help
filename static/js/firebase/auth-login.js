@@ -29,7 +29,6 @@ var wait = function (tiempo) {
   // -- AQUI ESTA EL CODIGO DE GET
   
   //------------------------------
-  var arrayGET = new Array();
   
   // PONER LOS VAR ENCIMA DE ESTA LINEA
   

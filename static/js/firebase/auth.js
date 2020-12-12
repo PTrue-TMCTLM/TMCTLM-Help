@@ -5,7 +5,7 @@ var wait = function (tiempo) {
     },
   };
 };
-
+var db = firebase.firestore();
 function ParseURLParametrer(Parametrer) {
   var FullURL = window.location.search.substring(1);
   var ParametresArray = FullURL.split("&");
@@ -27,6 +27,10 @@ function registro() {
     .auth()
     .createUserWithEmailAndPassword(email.value, password.value)
     .then((user) => {})
+    db.collection("user_license")
+    .doc(email.value)
+    .collection("userOwns")
+    .add()
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
