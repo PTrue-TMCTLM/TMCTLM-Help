@@ -29,7 +29,7 @@ var account = db
 
         hidden.bs.modal	
         var errorModal = document.getElementById('myModal')
-        errorModal.addEventListener('hidden.bs.modal', fueraInfo()
+        errorModal.addEventListener('hidden.bs.modal', fueraInfo())
         $("#errorModal").modal("show")
     }
     })
