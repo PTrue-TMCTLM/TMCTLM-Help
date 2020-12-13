@@ -18,7 +18,7 @@ function tables_adddata() {
           <td>${doc.data().Tipo}</td>
           <td>${doc.data().Apps_usadas}</td>
           <td>${doc.data().Apps_max}</td>
-          <td><button class="btn btn-warning" >Añadir Aplicaciones</button></td>
+          <td><a target="_blank" href="https://forms.gle/eYHoJzYYV2rtwECE8"><button class="btn btn-warning">Cambiar APPs</button></a></td>
           </tr>
           `;
         });
