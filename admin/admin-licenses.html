@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>TMCTLM Help</title>
+    <link
+      rel="shortcut icon"
+      href="../static/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="../static/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom fonts for this template -->
+    <link
+      href="../static/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../static/vendor/simple-line-icons/css/simple-line-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Custom styles for this template -->
+    <link href="../static/css/landing-page.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/../static/css/styles.css" />
+  </head>
+
+  <body onload="admload('admin-licenses.html')">
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <div class="logo logo-brand">
+          <a class="navbar-brand logo-brand" href="../index.html"
+            ><img
+              class="logo logo-brand"
+              src="../static/img/Logo-tmctlm.png"
+            />TMCTLM Help</a
+          >
+        </div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="dropdownMenuReference"
+            onclick="logout('index.html')"
+          >
+            Log-Out
+          </button>
+          <a href="../index.html">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="GoToLogin"
+            >
+              Licencias
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-ligt center margin-top margin-section">
+      <form class="text-center">
+        <label for="licenciaInput">Licencia</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="licenciaInput"
+          placeholder="Licencia"
+        ></input>
+        <br />
+        <label for="TipoInput">Tipo</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="TipoInput"
+          placeholder="Tipo"
+        ></input>
+        <br />
+        <label for="Apps_usadasInput">Apps usadas</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="Apps_usadasInput"
+          placeholder="Apps usadas"
+        ></input>
+        <br />
+        <label for="Apps_maxInput">Apps max</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="Apps_maxInput"
+          placeholder="Apps max"
+        ></input>
+        <br />
+
+        <button type="button" id="botonGuardar" onclick="tables_createdata()" class="btn btn-primary">Guardar</button>
+      <br />
+      </form>
+      <br>
+         <button
+          type="button"
+          class="btn btn-primary"
+          onclick="tables_adddata()"
+        >
+          Recargar
+        </button>
+        <br />
+        <br />
+        <label for="CorreoInput">Correo</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          id="CorreoInput"
+          placeholder="Correo"
+        ></input>
+        <br />
+      <br />
+
+      <table id="licenciastable" class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <th scope="col">ID</th>
+          <th scope="col">Licencia</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Apps usadas</th>
+          <th scope="col">Apps max</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+        </thead>
+        <tbody id="licencias">
+          <!---->
+        </tbody>
+      </table>
+    </section>
+
+        <!-- Modal -->
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">ERROR</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              onclick="$('#errorModal').modal('hide')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Ha ocurrido un error, mas info:
+<p id="errorCodeModal">No se conoze el error</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal" onclick="$('#errorModal').modal('hide')"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">
+              &copy; Your Website 2020. All Rights Reserved.
+            </p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-facebook fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Button trigger modal -->
+
+
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <!-- Now put below de init-->
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
+        authDomain: "tmctlm-help.firebaseapp.com",
+        projectId: "tmctlm-help",
+        storageBucket: "tmctlm-help.appspot.com",
+        messagingSenderId: "276187882589",
+        appId: "1:276187882589:web:e3de653765a5403a7559b4",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+
+    <!-- Now put below the code -->
+
+    <script src="../static/js/firebase/data.js" type="text/javascript"></script>
+    <script src="../static/js/firebase/auth-login.js"></script>
+    <script src="../static/js/firebase/auth-admin.js"></script>
+    <script>
+
+        console.log("holaaaa")
+        function imloggedin(){
+        OnlyADM("admin/admin-licenses.html")
+        }
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

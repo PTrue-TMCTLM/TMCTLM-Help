@@ -12,7 +12,7 @@
     <title>TMCTLM Help</title>
     <link
       rel="shortcut icon"
-      href="static/img/favicon.ico"
+      href="/static/img/favicon.ico"
       type="image/x-icon"
     />
     <link
@@ -23,17 +23,17 @@
 
     <!-- Bootstrap core CSS -->
     <link
-      href="static/vendor/bootstrap/css/bootstrap.min.css"
+      href="/static/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
     <!-- Custom fonts for this template -->
     <link
-      href="static/vendor/fontawesome-free/css/all.min.css"
+      href="/static/vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"
     />
     <link
-      href="static/vendor/simple-line-icons/css/simple-line-icons.css"
+      href="/static/vendor/simple-line-icons/css/simple-line-icons.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -43,11 +43,11 @@
       type="text/css"
     />
     <!-- Custom styles for this template -->
-    <link href="static/css/landing-page.min.css" rel="stylesheet" />
+    <link href="/static/css/landing-page.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
 
-  <body onload="waiter('admin-licenses.html')">
+  <body onload="waiter('licenses.html', '/')">
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
@@ -55,7 +55,7 @@
           <a class="navbar-brand logo-brand" href="index.html"
             ><img
               class="logo logo-brand"
-              src="static/img/Logo-tmctlm.png"
+              src="/static/img/Logo-tmctlm.png"
             />TMCTLM Help</a
           >
         </div>
@@ -64,56 +64,24 @@
             type="button"
             class="btn btn-secondary"
             id="dropdownMenuReference"
-            onclick="logout('index.html')"
+            onclick="logout('licenses.html')"
           >
             Log-Out
           </button>
+          <a href="index.html">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="GoToLogin"
+            >
+              Inicio
+            </button>
+          </a>
         </div>
       </div>
     </nav>
 
     <section class="bg-ligt center margin-top margin-section">
-      <form class="text-center">
-        <label for="licenciaInput">Licencia</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="licenciaInput"
-          placeholder="Licencia"
-        ></input>
-        <br />
-        <label for="TipoInput">Tipo</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="TipoInput"
-          placeholder="Tipo"
-        ></input>
-        <br />
-        <label for="Apps_usadasInput">Apps usadas</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="Apps_usadasInput"
-          placeholder="Apps usadas"
-        ></input>
-        <br />
-        <label for="Apps_maxInput">Apps max</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="Apps_maxInput"
-          placeholder="Apps max"
-        ></input>
-        <br />
-
-        <button type="button" id="botonGuardar" onclick="tables_createdata()" class="btn btn-primary">Guardar</button>
-      <br />
-      </form>
       <br>
          <button
           type="button"
@@ -122,16 +90,6 @@
         >
           Recargar
         </button>
-        <br />
-        <br />
-        <label for="CorreoInput">Correo</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="CorreoInput"
-          placeholder="Correo"
-        ></input>
         <br />
       <br />
 
@@ -142,8 +100,7 @@
           <th scope="col">Tipo</th>
           <th scope="col">Apps usadas</th>
           <th scope="col">Apps max</th>
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
+          <th scope="col">Añadir APPs</th>
         </thead>
         <tbody id="licencias">
           <!---->
@@ -151,6 +108,44 @@
       </table>
     </section>
 
+        <!-- Modal -->
+    <div
+      class="modal fade"
+      id="errorModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">ERROR</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              onclick="$('#errorModal').modal('hide')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Ha ocurrido un error, mas info:
+<p id="errorCodeModal">No se conoze el error</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal" onclick="$('#errorModal').modal('hide')"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
@@ -199,47 +194,25 @@
         </div>
       </div>
     </footer>
+    <!-- FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+      crossorigin="anonymous"
+    ></script>
     <!-- Button trigger modal -->
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="errorModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">ERROR</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onclick="$('#errorModal').modal('hide')"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">Ha ocurrido un error, mas info:
-<p id="errorCodeModal"></p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal" onclick="$('#errorModal').modal('hide')"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
     <!-- Now put below de init-->
@@ -261,31 +234,20 @@
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
     <!-- Now put below the code -->
-    <script src="static/js/firebase/data.js" type="text/javascript"></script>
-    <script src="static/js/firebase/auth-login.js"></script>
-    <script src="static/js/firebase/auth-admin.js"></script>
+
+    <script src="/static/js/firebase/noadmin-data.js" type="text/javascript"></script>
+    <script src="/static/js/firebase/auth-login.js"></script>
     <script>
-      function fueraInfo(){
-        fuera('admin-licenses.html')
-      }
+
+        console.log("holaaaa")
+        function imloggedin(){
+        }
+
     </script>
 
 
 
-    <!-- FontAwesome -->
-    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-      crossorigin="anonymous"
-    ></script>
+
   </body>
 </html>

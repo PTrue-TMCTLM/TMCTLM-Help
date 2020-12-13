@@ -9,10 +9,10 @@ var wait = function (tiempo) {
     source: "default",
   };
   var db = firebase.firestore();
-  var email3array, docRef, email3, goToVar ;
+  var email3array, docRef, email3, goToVar, rootvar ;
   email3 = localStorage.getItem("userEmail");
   email3array = email3.split("&");
-  function waiter(goTo) {
+  function waiter(goTo, root) {
     try {
       console.log("OK 0 " + email3array[0]);
       console.log("OK 1 " + email3array[1]);
@@ -23,6 +23,7 @@ var wait = function (tiempo) {
     } finally {
       docRef = db.collection("user_license").doc(email3array[1]).get();
       goToVar = goTo
+      rootvar = root
       imloggedin();
     }
   }
@@ -39,7 +40,7 @@ var wait = function (tiempo) {
   
   function logout(GoToLogout) {
     firebase.auth().signOut().then(function() {
-      window.location.replace("login/index.html?onLogin=" + GoToLogout);
+      window.location.replace("login/index.html?onLogin=" + GoToLogout + "&root=" + rootvar);
     }).catch(function(error) {
     });
     

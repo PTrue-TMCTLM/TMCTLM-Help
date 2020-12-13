@@ -1,7 +1,7 @@
 var emailbox = document.getElementById("CorreoInput");
 var errorCodeModal = document.getElementById("errorCodeModal");
 var emailval;
-function imloggedin() {}
+
 
 function tables_createdata() {
   var licencia = document.getElementById("licenciaInput");
@@ -58,7 +58,7 @@ function tables_adddata() {
           <td>${doc.data().Licencia}</td>
           <td>${doc.data().Tipo}</td>
           <td>${doc.data().Apps_usadas}</td>
-          <td>}</td>
+          <td>${doc.data().Apps_max}</td>
           <td><button class="btn btn-warning" onclick='tables_updatedata("${doc.id}", "${doc.data().Licencia}", "${doc.data().Tipo}", "${doc.data().Apps_usadas}", "${doc.data().Apps_usadas}" )'>Editar</button></td>
           <td><button class="btn btn-danger" onclick='tables_deleteData("${
             doc.id
