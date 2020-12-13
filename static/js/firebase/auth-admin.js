@@ -29,9 +29,11 @@ var account = db
 
         hidden.bs.modal	
         var errorModal = document.getElementById('myModal')
-        errorModal.addEventListener('hidden.bs.modal', function (event) {
-            window.location.replace("login/index.html?onLogin=admin-license.html")})
+        errorModal.addEventListener('hidden.bs.modal', fueraInfo()
         $("#errorModal").modal("show")
     }
     })
  })
+function fuera(url){
+window.location.replace("login/index.html?onLogin=" + url)
+}
