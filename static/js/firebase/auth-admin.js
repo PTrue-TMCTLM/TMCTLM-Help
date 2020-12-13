@@ -24,7 +24,7 @@ var account = db
       doc.data().EMAIL,
       " - IS ADMIN = ",
       doc.data().IsAdmin)
-        if (doc.data().IsAdmin == true){
+        if (doc.data().IsAdmin != true){
         errorCodeModal.innerHTML = "Necesitas permisos para ver esto..."
 
         hidden.bs.modal	
