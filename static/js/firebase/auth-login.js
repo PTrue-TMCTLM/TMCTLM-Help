@@ -37,11 +37,3 @@ var wait = function (tiempo) {
   function ifLoggedIn() {
     window.location.replace("login/index.html?onLogin=" + goToVar);
   }
-  
-  function logout(GoToLogout) {
-    firebase.auth().signOut().then(function() {
-      window.location.replace("login/index.html?onLogin=" + GoToLogout + "&root=" + rootvar);
-    }).catch(function(error) {
-    });
-    
-  }
