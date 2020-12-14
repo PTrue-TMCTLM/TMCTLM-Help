@@ -34,13 +34,14 @@ var password = document.getElementById("inputPassword");
 var uid, displayName, photoURL, email2, licenciaGen;
 
 function registro() {
+
   firebase
     .auth()
     .createUserWithEmailAndPassword(email.value, password.value)
     .then((user) => {
       generarLicencia();
       db.collection("user_license")
-        .doc(email.value)
+        .doc(user.email)
         .collection("userOwns")
         .add({
           Licencia: licenciaGen,
@@ -66,6 +67,12 @@ function registro() {
         .catch(function (error) {
           console.error("Error adding document: ", error);
         });
+        iniciosesion()
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
     });
 }
 
@@ -86,18 +93,18 @@ function iniciosesion() {
 }
 
 function whenislogged(user) {
-  var user = firebase.auth().currentUser;
+  var user1 = firebase.auth().currentUser;
   var email, uid;
 
   localStorage.setItem("userEmail", uid + "&" + email);
   wait(3000).then(function () {
-    if (user != null) {
-      email = user.email;
-      uid = user.uid;
+    if (user1 != null) {
+      email = user1.email;
+      uid = user1.uid;
       if (typeof onLogin !== "undefined") {
-        window.location.replace(root + onLogin);
+        window.location.replace("../" + root + onLogin);
       } else {
-        window.location.replace(root + "/index.html");
+        window.location.replace("../" + root + "/index.html");
       }
       // Crear una clave-valor
       localStorage.setItem("userEmail", uid + "&" + email);
