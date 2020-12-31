@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T9G3MVG");
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -12,7 +26,7 @@
     <title>TMCTLM Help</title>
     <link
       rel="shortcut icon"
-      href="../static/img/favicon.ico"
+      href="static/img/favicon.ico"
       type="image/x-icon"
     />
     <link
@@ -23,17 +37,17 @@
 
     <!-- Bootstrap core CSS -->
     <link
-      href="../static/vendor/bootstrap/css/bootstrap.min.css"
+      href="static/vendor/bootstrap/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
     <!-- Custom fonts for this template -->
     <link
-      href="../static/vendor/fontawesome-free/css/all.min.css"
+      href="static/vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"
     />
     <link
-      href="../static/vendor/simple-line-icons/css/simple-line-icons.css"
+      href="static/vendor/simple-line-icons/css/simple-line-icons.css"
       rel="stylesheet"
       type="text/css"
     />
@@ -42,12 +56,23 @@
       rel="stylesheet"
       type="text/css"
     />
+
     <!-- Custom styles for this template -->
-    <link href="../static/css/landing-page.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/../static/css/styles.css" />
+    <link href="static/css/landing-page.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
 
   <body onload="admload('admin-licenses.html')">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T9G3MVG"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
@@ -69,11 +94,7 @@
             Log-Out
           </button>
           <a href="../index.html">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              id="GoToLogin"
-            >
+            <button type="button" class="btn btn-secondary" id="GoToLogin">
               Inicio
             </button>
           </a>
@@ -90,7 +111,7 @@
           class="form-control"
           id="licenciaInput"
           placeholder="Licencia"
-        ></input>
+        />
         <br />
         <label for="TipoInput">Tipo</label>
         <input
@@ -99,7 +120,7 @@
           class="form-control"
           id="TipoInput"
           placeholder="Tipo"
-        ></input>
+        />
         <br />
         <label for="Apps_usadasInput">Apps usadas</label>
         <input
@@ -108,7 +129,7 @@
           class="form-control"
           id="Apps_usadasInput"
           placeholder="Apps usadas"
-        ></input>
+        />
         <br />
         <label for="Apps_maxInput">Apps max</label>
         <input
@@ -117,32 +138,35 @@
           class="form-control"
           id="Apps_maxInput"
           placeholder="Apps max"
-        ></input>
+        />
         <br />
 
-        <button type="button" id="botonGuardar" onclick="tables_createdata()" class="btn btn-primary">Guardar</button>
-      <br />
-      </form>
-      <br>
-         <button
+        <button
           type="button"
+          id="botonGuardar"
+          onclick="tables_createdata()"
           class="btn btn-primary"
-          onclick="tables_adddata()"
         >
-          Recargar
+          Guardar
         </button>
         <br />
-        <br />
-        <label for="CorreoInput">Correo</label>
-        <input
-          required
-          type="text"
-          class="form-control"
-          id="CorreoInput"
-          placeholder="Correo"
-          type="email"
-        ></input>
-        <br />
+      </form>
+      <br />
+      <button type="button" class="btn btn-primary" onclick="tables_adddata()">
+        Recargar
+      </button>
+      <br />
+      <br />
+      <label for="CorreoInput">Correo</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        id="CorreoInput"
+        placeholder="Correo"
+        type="email"
+      />
+      <br />
       <br />
 
       <table id="licenciastable" class="table table-bordered table-hover">
@@ -161,7 +185,7 @@
       </table>
     </section>
 
-        <!-- Modal -->
+    <!-- Modal -->
     <div
       class="modal fade"
       id="errorModal"
@@ -184,14 +208,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">Ha ocurrido un error, mas info:
-<p id="errorCodeModal">No se conoze el error</p>
+          <div class="modal-body">
+            Ha ocurrido un error, mas info:
+            <p id="errorCodeModal">No se conoze el error</p>
           </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal" onclick="$('#errorModal').modal('hide')"
+              data-dismiss="modal"
+              onclick="$('#errorModal').modal('hide')"
             >
               Close
             </button>
@@ -264,8 +290,6 @@
     ></script>
     <!-- Button trigger modal -->
 
-
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
     <!-- Now put below de init-->
@@ -293,17 +317,10 @@
     <script src="../static/js/firebase/auth-admin.js"></script>
     <script src="../static/js/firebase/auth-logout.js"></script>
     <script>
-
-        console.log("holaaaa")
-        function imloggedin(){
-        OnlyADM("admin/admin-licenses.html")
-        }
-
+      console.log("holaaaa");
+      function imloggedin() {
+        OnlyADM("admin/admin-licenses.html");
+      }
     </script>
-
-
-
-
-
   </body>
 </html>

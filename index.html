@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Google Tag Manager -->
+
+  <!-- End Google Tag Manager -->
   <head>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T9G3MVG");
+    </script>
+
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -15,7 +31,11 @@
       href="static/img/favicon.ico"
       type="image/x-icon"
     />
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css"
+    />
 
     <!-- Bootstrap core CSS -->
     <link
@@ -43,13 +63,23 @@
     <link href="static/css/landing-page.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
-
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T9G3MVG"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <div class="logo logo-brand">
-          <a class="navbar-brand logo-brand" href="index.html"><img
+          <a class="navbar-brand logo-brand" href="index.html"
+            ><img
               class="logo logo-brand"
               src="static/img/Logo-tmctlm.png"
             />TMCTLM Help</a
@@ -57,22 +87,18 @@
         </div>
         <div class="btn-group">
           <a href="licenses.html">
+            <button type="button" class="btn btn-secondary" id="GoToLogin">
+              Licencias
+            </button>
+          </a>
           <button
             type="button"
             class="btn btn-secondary"
-            id="GoToLogin"
+            id="dropdownMenuReference"
+            onclick="logout('index.html')"
           >
-            Licencias
+            Log-Out
           </button>
-        </a>
-          <button
-          type="button"
-          class="btn btn-secondary"
-          id="dropdownMenuReference"
-          onclick="logout('index.html')"
-        >
-          Log-Out
-      </button>
         </div>
       </div>
     </nav>
@@ -390,31 +416,30 @@
       </div>
     </footer>
 
-
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
     <!-- Now put below de init-->
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
-    authDomain: "tmctlm-help.firebaseapp.com",
-    projectId: "tmctlm-help",
-    storageBucket: "tmctlm-help.appspot.com",
-    messagingSenderId: "276187882589",
-    appId: "1:276187882589:web:e3de653765a5403a7559b4"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-<!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBCVBUYgvY9N1AP2RHrVC1WMawopwI_BuE",
+        authDomain: "tmctlm-help.firebaseapp.com",
+        projectId: "tmctlm-help",
+        storageBucket: "tmctlm-help.appspot.com",
+        messagingSenderId: "276187882589",
+        appId: "1:276187882589:web:e3de653765a5403a7559b4",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
-  <!-- Now put below the code -->
-   <script src="static/js/firebase/data.js"></script>
-   <script src="static/js/firebase/auth.js"></script>
-   <script src="static/js/firebase/auth-logout.js"></script>
+    <!-- Now put below the code -->
+    <script src="static/js/firebase/data.js"></script>
+    <script src="static/js/firebase/auth.js"></script>
+    <script src="static/js/firebase/auth-logout.js"></script>
 
     <!-- FontAwesome -->
     <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/js/all.min.js"></script>
