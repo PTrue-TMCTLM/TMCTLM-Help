@@ -11,7 +11,7 @@ function tables_adddata() {
           <th scope="row">${doc.id}</th>
           <td>${doc.data().asignatura}</td>
           <td>${doc.data().nombre}</td>
-          <td>Abrir</td>
+          <td><a href="https://tmctlm-static-files.netlify.app/tmctlm-Help/libreria/PDF${doc.data().pdf}" target="_blank"><button type="button" class="btn btn-light">Abrir</button></a></td>
           </tr>
           `;
         });
