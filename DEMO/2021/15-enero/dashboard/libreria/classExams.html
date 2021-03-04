@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TMCTLM Help - Buscar en la libreria</title>
+    <title>TMCTLM Help - Libreria de la clase</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -112,16 +112,16 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Buscar Examenes</h1>
-                    <p class="mb-4">Aqui puedes buscar examenes de TMCTLM Resources sin salir de la web.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Libreria de la clase</h1>
+                    <p class="mb-4">Aqui puedes buscar examenes de la clase sin salir de la web.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">TMCTLM Resources</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Codigo de login: <input id="clase"></input><button onclick="buttonClass()">Abrir</button></h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="tablaOcultar">
                                 <table class="table table-striped table-dark" id="dataTable">
                                     <thead class="thead-dark">
                                         <tr>
@@ -198,7 +198,7 @@
 
 
     </script>
-    <script src="../js/firebase/exam/getlist.js"></script>
+    <script src="../js/firebase/exam/getlistClass.js"></script>
 </body>
 
 </html>
