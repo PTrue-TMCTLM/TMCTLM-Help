@@ -3,13 +3,13 @@ var db = firebase.firestore();
 
 function buttonClass(){
   var tabla2 = document.getElementById("tablaOcultar");
-  tabla2.className = ""
   tables_adddata()
 }
 function tables_adddata() {
     var clase = document.getElementById("clase").value;
-    newdb = db.collection("school_data").where("loginCode", "==", clase);
-    newdb.collection("libreria").onSnapshot((querySnapshot) => {
+    db.collection("school_data")
+    .where("loginCode", "==", String(clase))
+    .collection("libreria").onSnapshot((querySnapshot) => {
         tabla.innerHTML = "";
         querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data().Licencia}`);
