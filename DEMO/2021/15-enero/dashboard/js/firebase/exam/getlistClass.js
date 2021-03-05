@@ -7,9 +7,9 @@ function buttonClass(){
 }
 function tables_adddata() {
     var clase = document.getElementById("clase").value;
-    db.collection("school_data")
-    .where("loginCode", "==", String(clase))
-    .collection("libreria").onSnapshot((querySnapshot) => {
+    db.collection("school_exams")
+    .where("shcool_id", "==", String(clase))
+    .onSnapshot((querySnapshot) => {
         tabla.innerHTML = "";
         querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data().Licencia}`);
